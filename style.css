@@ -1,4 +1,3 @@
-/* Body */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -11,7 +10,6 @@ body {
   padding: 20px;
 }
 
-/* Header */
 header h1 {
   margin-bottom: 25px;
   font-size: 2.5rem;
@@ -19,7 +17,6 @@ header h1 {
   color: #444;
 }
 
-/* Search bar container */
 .search-container {
   display: flex;
   align-items: center;
@@ -33,10 +30,10 @@ header h1 {
   gap: 0;
 }
 
-/* Input */
+
 .search-container input {
-  flex: 1; /* take remaining space */
-  min-width: 0; /* important for mobile shrink */
+  flex: 1;
+  min-width: 0; 
   padding: 12px 15px;
   font-size: 16px;
   border: none;
@@ -61,7 +58,7 @@ header h1 {
   transition: background 0.3s, transform 0.2s;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
-  flex-shrink: 0; /* prevent button from shrinking */
+  flex-shrink: 0; 
 }
 
 .search-container button#searchBtn:hover {
@@ -69,7 +66,6 @@ header h1 {
   transform: scale(1.05);
 }
 
-/* Grid layout */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -106,7 +102,7 @@ header h1 {
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* Bottom buttons */
+
 .bottom-buttons {
   display: flex;
   justify-content: flex-end;
@@ -146,13 +142,12 @@ header h1 {
   transform: scale(1.05);
 }
 
-/* Fade-in animation */
+
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);

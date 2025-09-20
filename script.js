@@ -30,7 +30,7 @@ function displayImages(images) {
   });
 }
 
-// Search button
+
 searchBtn.addEventListener('click', async () => {
   keyword = input.value.trim();
   if (!keyword) return;
@@ -42,7 +42,7 @@ searchBtn.addEventListener('click', async () => {
   clearBtn.style.display = 'inline-block'; // show clear button
 });
 
-// Load more button
+
 loadMoreBtn.addEventListener('click', async () => {
   page++;
   const images = await fetchImages();
@@ -50,7 +50,7 @@ loadMoreBtn.addEventListener('click', async () => {
   if (images.length < perPage) loadMoreBtn.style.display = 'none';
 });
 
-// Clear button
+
 clearBtn.addEventListener('click', () => {
   input.value = '';
   imageGrid.innerHTML = '';
