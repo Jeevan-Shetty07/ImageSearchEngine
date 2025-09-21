@@ -22,31 +22,32 @@ function displayImages(images) {
     card.className = "card";
     card.style.animationDelay = `${index * 0.1}s`;
     card.innerHTML = `
-      <div class="img-container">
-        <img src="${img.urls.small}" alt="${img.alt_description || "Image"}">
-        <a href="IMAGE_URL" download class="download-btn">
-  <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
-    <path d="M5 20h14v-2H5v2zm7-18L5.33 9h3.34v4h4.66V9h3.34L12 2z"/>
-  </svg>
-</a>
-
-      </div>
+      <img src="${img.urls.small}" alt="${img.alt_description || "Image"}" loading="lazy">
+      <div class="overlay">📸 ${img.user.name}</div>
     `;
     imageGrid.appendChild(card);
   });
 }
 
-searchBtn.addEventListener("click", async () => {
+async function performSearch() {
   keyword = input.value.trim();
   if (!keyword) return;
   page = 1;
   imageGrid.innerHTML = "";
   const images = await fetchImages();
   displayImages(images);
-  loadMoreBtn.style.display =
-    images.length === perPage ? "inline-block" : "none";
+  loadMoreBtn.style.display = images.length === perPage ? "inline-block" : "none";
   clearBtn.style.display = "inline-block";
+}
+
+searchBtn.addEventListener("click", performSearch);
+
+input.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    performSearch();
+  }
 });
+
 
 loadMoreBtn.addEventListener("click", async () => {
   page++;
@@ -58,6 +59,7 @@ loadMoreBtn.addEventListener("click", async () => {
 clearBtn.addEventListener("click", () => {
   input.value = "";
   imageGrid.innerHTML = "";
+  page = 1;
   loadMoreBtn.style.display = "none";
   clearBtn.style.display = "none";
 });
