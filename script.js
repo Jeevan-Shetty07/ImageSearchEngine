@@ -8,6 +8,7 @@ const clearBtn = document.getElementById("clearBtn");
 const loadMoreBtn = document.getElementById("loadMoreBtn");
 const imageGrid = document.getElementById("imageGrid");
 const input = document.getElementById("keyword");
+const themeToggle = document.getElementById("themeToggle");
 
 async function fetchImages() {
   const url = `https://api.unsplash.com/search/photos?page=${page}&query=${keyword}&client_id=${key}&per_page=${perPage}`;
@@ -41,13 +42,7 @@ async function performSearch() {
 }
 
 searchBtn.addEventListener("click", performSearch);
-
-input.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
-    performSearch();
-  }
-});
-
+input.addEventListener("keyup", (e) => { if (e.key === "Enter") performSearch(); });
 
 loadMoreBtn.addEventListener("click", async () => {
   page++;
@@ -62,4 +57,10 @@ clearBtn.addEventListener("click", () => {
   page = 1;
   loadMoreBtn.style.display = "none";
   clearBtn.style.display = "none";
+});
+
+/* Dark/Light Mode Toggle with Sun/Moon */
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  themeToggle.textContent = document.body.classList.contains("dark-mode") ? "🌞" : "🌙";
 });
